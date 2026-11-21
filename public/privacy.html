@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Privacy · Draftoff</title>
+<meta name="description" content="What Draftoff stores and for how long: a draft's topic, picks, the names people choose and their votes. No accounts, no ads, no tracking.">
+<link rel="canonical" href="https://pb-draft-off.jan-bef.workers.dev/privacy">
+<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="/app.css"></head>
+<body><div class="wrap"><header class="top"><a class="logo" href="/"><img src="/icon.svg" alt="" width="30" height="30">Draftoff</a></header>
+<main class="card" style="max-width:760px">
+<h1 style="font-size:2rem">Privacy</h1>
+<p class="muted">Last updated 21 November 2026</p>
+<h2>What we store</h2>
+<p>For each draft: its topic, settings, the suggestion list, the picks, and for each person who joins the name they type, whether they draft or vote, and their vote. That is all the service needs to work. We do not ask for an email, a phone number or an account.</p>
+<p>Your device keeps a random key in its local storage so the site remembers you in that draft. On our side we keep only a one-way hash of that key. Anyone with a draft's link can see its picks and the names of the people in it, so don't use your full name if you'd rather not.</p>
+<p>To stop abuse we count requests per network address for one hour, using a one-way hash of the address. The counts are deleted after about two hours.</p>
+<h2>What we don't do</h2>
+<p>No ads, no tracking cookies, no analytics scripts, no selling or sharing data. Cloudflare hosts the site and may keep standard server logs.</p>
+<h2>How long</h2>
+<p>The host can delete a draft at any time. Every draft is deleted automatically 180 days after it was created. Voters can leave a draft, which deletes their name and vote.</p>
+<h2>Contact</h2>
+<p>Questions or a removal request: open an issue at <a href="https://github.com/janwan2003/draft-off/issues">github.com/janwan2003/draft-off</a>.</p>
+<h2>About</h2>
+<p>Draftoff is a free snake-draft game for group chats.</p>
+</main>
+<footer class="foot"><a href="/">Start a draft</a></footer></div></body></html>

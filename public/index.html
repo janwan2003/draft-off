@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Draftoff · Draft anything with your group chat (free, no sign-up)</title>
+<meta name="description" content="Settle the group chat debate with a snake draft: best Christmas movies, best snacks, best 2000s songs. Take turns picking, then everyone votes on the best team. One link, no app, no account.">
+<link rel="canonical" href="https://pb-draft-off.jan-bef.workers.dev/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Draftoff">
+<meta property="og:title" content="Draftoff · Draft anything with your group chat">
+<meta property="og:description" content="Take turns picking the best Christmas movies, snacks or songs. Then the group votes on whose team wins. Free, no sign-up.">
+<meta property="og:url" content="https://pb-draft-off.jan-bef.workers.dev/">
+<meta property="og:image" content="https://pb-draft-off.jan-bef.workers.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="google-site-verification" content="E5DqnLJA_s_0vDF_tH9irMHn6LYxN-jg28IQng7LaKc" />
+<meta name="theme-color" content="#0e7a63">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="stylesheet" href="/app.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Draftoff","url":"https://pb-draft-off.jan-bef.workers.dev/","applicationCategory":"GameApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free snake draft game for group chats: draft any topic in turns, then the group votes on the best team. No sign-up."}</script>
+<script type="module" src="/home.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="/"><img src="/icon.svg" alt="" width="30" height="30">Draftoff</a>
+    <nav><a href="#how">How it works</a><a href="#faq">FAQ</a></nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <span class="kicker">Free · no sign-up · no app</span>
+        <h1>Draft anything. Let the group chat decide.</h1>
+        <p class="lede">Best Christmas movies? Best snacks? Best 2000s songs? Take turns picking in snake order, then everyone in the chat votes on whose team is best.</p>
+        <ul class="ticks">
+          <li>One link in WhatsApp, iMessage or Discord. Friends join with a name</li>
+          <li>Pick at your own pace. A timer and autopick keep it moving</li>
+          <li>The group votes, not an algorithm. Results unlock together</li>
+        </ul>
+        <div class="mini-board" aria-hidden="true" style="max-width:420px;margin-top:22px">
+          <div class="h">Ola</div><div class="h">Kevin</div><div class="h">Sam</div>
+          <div>Home Alone</div><div>Die Hard</div><div>Elf</div>
+          <div>The Holiday</div><div>Love Actually</div><div class="now">Sam’s pick…</div>
+        </div>
+      </div>
+
+      <form id="create" class="card" novalidate>
+        <h2 style="margin-bottom:4px">Start a draft</h2>
+        <p class="muted small" style="margin:0">Takes 20 seconds. You get one link to share.</p>
+        <label for="title">Topic</label>
+        <input id="title" type="text" maxlength="80" placeholder="Best Christmas movies" autocomplete="off" required>
+        <div class="topics" id="topics" aria-label="Topic ideas"></div>
+        <p class="poolnote" id="poolnote"></p>
+        <details class="more" id="custompool">
+          <summary>Add your own suggestions (optional)</summary>
+          <p class="muted small" style="margin:6px 0">One per line. They autocomplete as people type and fill in a pick when the timer runs out.</p>
+          <textarea id="pool" placeholder="Die Hard&#10;Home Alone&#10;Elf"></textarea>
+        </details>
+        <div class="grid2">
+          <div>
+            <label for="rounds">Picks each</label>
+            <select id="rounds"><option>3</option><option>4</option><option selected>5</option><option>6</option><option>7</option><option>8</option></select>
+          </div>
+          <div>
+            <label for="timer">Time per pick</label>
+            <select id="timer">
+              <option value="0">No limit</option>
+              <option value="300">5 min (live)</option>
+              <option value="3600">1 hour</option>
+              <option value="10800" selected>3 hours</option>
+              <option value="43200">12 hours</option>
+            </select>
+          </div>
+        </div>
+        <label for="name">Your name</label>
+        <input id="name" type="text" maxlength="24" placeholder="Ola" autocomplete="nickname" required>
+        <p class="err" id="err" role="alert"></p>
+        <button class="btn hot wide" id="go" type="submit">Create draft and get the link</button>
+        <p class="muted small center" style="margin:10px 0 0">2–8 drafters. Everyone else in the chat can vote.</p>
+      </form>
+    </div>
+
+    <section id="how">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="card step"><b>1</b><h3>Pick a topic, share the link</h3><p class="muted">Choose one of 30 ready topics or type your own. Drop the link in the group chat.</p></div>
+        <div class="card step"><b>2</b><h3>Draft in snake order</h3><p class="muted">Up to 8 drafters take turns: 1→8, then 8→1. No duplicates, so every pick is a steal from someone.</p></div>
+        <div class="card step"><b>3</b><h3>The chat votes</h3><p class="muted">Everyone votes for the best team and the pick of the draft. Results unlock when voting closes, then share the result card.</p></div>
+      </div>
+    </section>
+
+    <section class="card mine hidden" id="minebox" style="margin-bottom:28px">
+      <h2>Your drafts</h2>
+      <div id="mine"></div>
+    </section>
+
+    <section id="faq" class="faq">
+      <h2>FAQ</h2>
+      <details><summary>Does everyone need to be online at the same time?</summary><p>No. Each drafter gets a time per pick (5 minutes to 12 hours, or no limit). When it's your turn, open the link and pick. If time runs out, the next suggestion on the list is picked for you, so nobody holds up the chat.</p></details>
+      <details><summary>What is a snake draft?</summary><p>Drafters pick in order in round 1, then in reverse order in round 2, and so on. Whoever picks last in one round picks first in the next, which keeps it fair.</p></details>
+      <details><summary>Who decides the winner?</summary><p>Your group. After the last pick, everyone who opened the link votes for the best team (drafters can't vote for themselves) and, optionally, the single best pick. Votes stay hidden until voting closes, 24 hours after the last pick, or earlier if the host reveals them.</p></details>
+      <details><summary>Do I need an account or an app?</summary><p>No. Everyone joins with a name. Your device remembers you, and "Private link" lets you continue on another phone.</p></details>
+      <details><summary>Is it free?</summary><p>Yes, with no ads. Drafts are deleted automatically after 180 days. See the <a href="/privacy">privacy policy</a>.</p></details>
+    </section>
+  </main>
+
+  <footer class="foot"><span>Draftoff, snake drafts for group chats</span><a href="/privacy">Privacy</a><a href="https://janwan2003.github.io/draft-off/">About &amp; support</a></footer>
+</div>
+</body>
+</html>
